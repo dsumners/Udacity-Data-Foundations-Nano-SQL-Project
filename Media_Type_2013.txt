@@ -1,0 +1,11 @@
+SELECT mt.Name MediaTypeName, SUM(il.Quantity*il.UnitPrice) Sales
+FROM MediaType mt
+JOIN Track t
+ON mt.MediaTypeId = t.MediaTypeId
+JOIN InvoiceLine il
+ON t.TrackId = il.TrackId
+JOIN Invoice i
+ON il.InvoiceId = i.InvoiceId
+WHERE i.InvoiceDate BETWEEN '2012-12-31' AND '2014-01-01'
+GROUP BY MediaTypeName
+ORDER BY Sales DESC

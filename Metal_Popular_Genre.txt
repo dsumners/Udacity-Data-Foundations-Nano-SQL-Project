@@ -1,0 +1,11 @@
+SELECT i.BillingCountry Country, COUNT(g.Name) NumTracks
+FROM Invoice i
+JOIN InvoiceLine il
+ON i.InvoiceId = il.InvoiceId
+JOIN Track t
+ON il.TrackId = t.TrackId
+JOIN Genre g
+ON t.GenreId = g.GenreId
+WHERE g.Name = 'Metal'
+GROUP BY Country
+ORDER BY NumTracks DESC

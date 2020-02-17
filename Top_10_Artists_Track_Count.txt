@@ -1,0 +1,9 @@
+SELECT a.Name, COUNT(t.TrackId) Tracks
+FROM Artist a
+JOIN Album al
+ON a.ArtistId = al.ArtistId
+JOIN Track t
+ON t.AlbumId = al.AlbumId
+GROUP BY a.Name
+ORDER BY Tracks DESC
+LIMIT 10
